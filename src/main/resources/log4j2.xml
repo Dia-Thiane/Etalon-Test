@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--PatternLayout pattern="%d{HH:mm:ss.SSS} [%-5level] %logger{36} %msg%n" proposé dans le tuto/-->
+            <PatternLayout pattern="%highlight{%d{ISO8601_OFFSET_DATE_TIME_HHCMM} [%-5level] %logger{36} %msg%n}"/>
+        </Console>
+        <File name="AppLog" fileName="/var/log/etalon/etalon.log">
+            <PatternLayout pattern="%d{ISO8601_OFFSET_DATE_TIME_HHCMM} [%-5level] %logger{36} %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.atos.etalonTest" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AppLog"/>
+        </Logger>
+        <Root level="ERROR">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AppLog"/>
+        </Root>
+    </Loggers>
+</Configuration>
